@@ -28,8 +28,8 @@ export default function Layout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="dashboard" options={{ headerShown: false }} />
+        <Stack.Screen name="not_found" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
