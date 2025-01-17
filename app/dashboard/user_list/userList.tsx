@@ -5,6 +5,8 @@ const users = [
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
+  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
+  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",  
 ];
 
 export default function UserList() {
@@ -19,7 +21,7 @@ export default function UserList() {
               <Text style={styles.userText}>{index + 1}. {item}</Text>
             </View>
           )}
-          contentContainerStyle={styles.flatList}
+          contentContainerStyle={styles.flatListContainer} // 수정된 부분
         />
       </View>
     </View>
@@ -29,7 +31,7 @@ export default function UserList() {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    justifyContent: "center", // 세로 중앙 정렬
+    justifyContent: "flex-start", // 리스트를 위로 정렬
     alignItems: "center", // 가로 중앙 정렬
     padding: 16,
     backgroundColor: "#f8f8f8", // 배경색 (확인용)
@@ -43,9 +45,12 @@ const styles = StyleSheet.create({
     overflow: "hidden", // 경계선 넘어가는 부분 숨김
     backgroundColor: "#ffcc00",
   },
-  flatList: {
+  flatListContainer: {
+    // contentContainerStyle 스타일을 ViewStyle로 변경
     flexGrow: 1,
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 8, // 가로 여백
+    justifyContent: "flex-start", // 내용 상단 정렬
   },
   userContainer: {
     marginVertical: 8,
