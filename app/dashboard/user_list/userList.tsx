@@ -30,12 +30,13 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     justifyContent: "center", // 세로 중앙 정렬
-    alignItems: "flex-end", // 가로 오른쪽 정렬
+    alignItems: "center", // 가로 중앙 정렬
     padding: 16,
     backgroundColor: "#f8f8f8", // 배경색 (확인용)
   },
   container: {
-
+    width: "100%", // 너비를 100%로 설정하여 화면 크기에 맞추기
+    maxHeight: 400, // 최대 높이 설정
     borderWidth: 1, // 테두리 추가 (시각적으로 박스를 구분)
     borderColor: "#ccc",
     borderRadius: 8,
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
   },
   flatList: {
     flexGrow: 1,
-    alignItems: "flex-end",
     padding: 16,
   },
   userContainer: {
@@ -55,4 +55,3 @@ const styles = StyleSheet.create({
     color: "#333",
   },
 });
-
