@@ -6,7 +6,7 @@ const users = [
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
   "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",  
+  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
 ];
 
 export default function UserList() {

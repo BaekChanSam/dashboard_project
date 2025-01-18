@@ -19,9 +19,8 @@ export default function UsageChart() {
         justifyContent: "flex-start", // 왼쪽 정렬
         alignItems: "center", // 세로 중앙 정렬
         width: "100%", // 전체 화면 너비
-        height: "60vh", // 화면 높이에 비례한 크기
+        height: "51vh", // 화면 높이에 비례한 크기
         border: "1px solid #ccc", // 테두리 추가 (시각적 구분)
-        padding: "20px", // 내부 여백
         boxSizing: "border-box",
         backgroundColor: "#f9f9f9", // 배경색 추가
       }}
@@ -30,7 +29,7 @@ export default function UsageChart() {
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 40, right: 50, left: 30, bottom: 20 }}
+          margin={{ top: 40, right: 50, left: -10, bottom: 20 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="day" />

@@ -1,29 +1,41 @@
 import React from "react";
-import { View, StyleSheet, Dimensions } from "react-native";
-import UsageChart from "./dashboard/usage_chart/usageChart";
-import UserList from "./dashboard/user_list/userList";
-import TrainingManagement from "./dashboard/training_management/training_management";
-
-// 화면 크기 가져오기
-const { width, height } = Dimensions.get("window");
+import { View, StyleSheet } from "react-native";
+import UsageChart from "./dashboard/usage_chart/usageChart"; // UsageChart 컴포넌트
+import UserList from "./dashboard/user_list/userList"; // UserList 컴포넌트
+import TrainingManagement from "./dashboard/training_management/training_management"; // TrainingManagement 컴포넌트
+import Header from "./dashboard/header/header";
 
 export default function Dashboard() {
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        {/* 왼쪽: UsageChart */}
-        <View style={styles.left}>
-          <UsageChart />
+      {/* 상단 헤더 */}
+      <Header />
+
+      {/* 헤더 아래 메인 컨텐츠 */}
+      <View style={styles.content}>
+        {/* 상단 2개 컴포넌트 */}
+        <View style={styles.topRow}>
+          <View style={styles.leftComponent}>
+            <UsageChart />
+          </View>
+          <View style={styles.rightComponent}>
+            {/* 임시 영역 */}
+            <View style={styles.placeholder} />
+          </View>
         </View>
 
-        {/* 중앙: TrainingManagement */}
-        <View style={styles.center}>
-          <TrainingManagement />
-        </View>
-
-        {/* 오른쪽: UserList */}
-        <View style={styles.right}>
-          <UserList />
+        {/* 하단 3개 컴포넌트 */}
+        <View style={styles.bottomRow}>
+          <View style={styles.leftComponent}>
+            {/* 임시 영역 */}
+            <View style={styles.placeholder} />
+          </View>
+          <View style={styles.centerComponent}>
+            <UserList />
+          </View>
+          <View style={styles.rightComponent}>
+            <TrainingManagement />
+          </View>
         </View>
       </View>
     </View>
@@ -33,30 +45,36 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: "#f8f8f8",
-    justifyContent: "flex-start", // 세로 정렬
-    alignItems: "stretch", // 가로로 꽉 차게
   },
-  row: {
-    flexDirection: "row", // 수평 정렬
-    justifyContent: "space-between", // 각 영역을 고르게 배분
-    width: "100%", // 부모 컨테이너 너비를 100%로 설정
+  content: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
-  left: {
-    flex: 4, // 왼쪽 영역 크기 비율을 4로 설정하여 더 넓게
-    marginRight: 16, // 오른쪽에 여백 추가
+  topRow: {
+    flex: 1,
+    flexDirection: "row",
+    marginBottom: 16, // 상단과 하단 간격
   },
-  center: {
-    flex: 2, // 중앙 영역 크기 비율을 줄여서 2로 설정
-    marginRight: 16, // 오른쪽에 여백 추가
+  bottomRow: {
+    flex: 1,
+    flexDirection: "row",
   },
-  right: {
-    flex: 2, // 오른쪽 영역 크기 비율을 2로 설정
+  leftComponent: {
+    flex: 2, // 왼쪽 영역 비율
+    marginRight: 8, // 오른쪽 간격
   },
-  chartContainer: {
-    height: "60%", // 높이를 60%로 설정하여 화면에 맞게 조정
-    maxWidth: width, // 최대 너비를 화면 너비로 설정
-    overflow: "hidden", // 오버플로우 숨기기
+  centerComponent: {
+    flex: 1, // 중앙 영역 비율
+    marginHorizontal: 8, // 좌우 간격
+  },
+  rightComponent: {
+    flex: 2, // 오른쪽 영역 비율
+  },
+  placeholder: {
+    flex: 1,
+    backgroundColor: "#e0e0e0", // 임시 배경색 (회색)
+    borderRadius: 8,
   },
 });
