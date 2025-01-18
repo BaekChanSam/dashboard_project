@@ -3,8 +3,9 @@ import { View, StyleSheet } from "react-native";
 import UsageChart from "./dashboard/usage_chart/usageChart"; // UsageChart 컴포넌트
 import UserList from "./dashboard/user_list/userList"; // UserList 컴포넌트
 import TrainingManagement from "./dashboard/training_management/training_management"; // TrainingManagement 컴포넌트
-import Header from "./dashboard/header/header";
-import TrainingStats from "./dashboard/training_stats/training_stats";
+import Header from "./dashboard/header/header"; // Header 컴포넌트
+import TrainingStats from "./dashboard/training_stats/training_stats"; // TrainingStats 컴포넌트
+import QuestionList from "./dashboard/question_list/question_list"; // QuestionList 컴포넌트
 
 export default function Dashboard() {
   return (
@@ -14,23 +15,20 @@ export default function Dashboard() {
 
       {/* 헤더 아래 메인 컨텐츠 */}
       <View style={styles.content}>
-
         {/* 상단 2개 컴포넌트 */}
         <View style={styles.topRow}>
           <View style={styles.leftComponent}>
             <UsageChart />
           </View>
           <View style={styles.rightComponent}>
-          <TrainingStats />
-            <View style={styles.placeholder} />
+            <TrainingStats />
           </View>
         </View>
 
         {/* 하단 3개 컴포넌트 */}
         <View style={styles.bottomRow}>
           <View style={styles.leftComponent}>
-            {/* 임시 영역 */}
-            <View style={styles.placeholder} />
+            <QuestionList />
           </View>
           <View style={styles.centerComponent}>
             <UserList />
@@ -40,7 +38,6 @@ export default function Dashboard() {
           </View>
         </View>
       </View>
-      
     </View>
   );
 }
@@ -67,6 +64,7 @@ const styles = StyleSheet.create({
   leftComponent: {
     flex: 2, // 왼쪽 영역 비율
     marginRight: 8, // 오른쪽 간격
+    alignItems: "stretch", // 자식 컴포넌트가 부모 너비를 가득 채우도록
   },
   centerComponent: {
     flex: 1, // 중앙 영역 비율
@@ -74,10 +72,5 @@ const styles = StyleSheet.create({
   },
   rightComponent: {
     flex: 2, // 오른쪽 영역 비율
-  },
-  placeholder: {
-    flex: 1,
-    backgroundColor: "#e0e0e0", // 임시 배경색 (회색)
-    borderRadius: 8,
   },
 });
