@@ -8,7 +8,6 @@ const items = [
   { label: "Item 4", value: true },
   { label: "Item 5", value: false },
 
-
 ];
 
 type SelectedValues = {

@@ -4,6 +4,7 @@ import UsageChart from "./dashboard/usage_chart/usageChart"; // UsageChart 컴�
 import UserList from "./dashboard/user_list/userList"; // UserList 컴포넌트
 import TrainingManagement from "./dashboard/training_management/training_management"; // TrainingManagement 컴포넌트
 import Header from "./dashboard/header/header";
+import TrainingStats from "./dashboard/training_stats/training_stats";
 
 export default function Dashboard() {
   return (
@@ -13,13 +14,14 @@ export default function Dashboard() {
 
       {/* 헤더 아래 메인 컨텐츠 */}
       <View style={styles.content}>
+
         {/* 상단 2개 컴포넌트 */}
         <View style={styles.topRow}>
           <View style={styles.leftComponent}>
             <UsageChart />
           </View>
           <View style={styles.rightComponent}>
-            {/* 임시 영역 */}
+          <TrainingStats />
             <View style={styles.placeholder} />
           </View>
         </View>
@@ -38,6 +40,7 @@ export default function Dashboard() {
           </View>
         </View>
       </View>
+      
     </View>
   );
 }
