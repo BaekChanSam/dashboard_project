@@ -13,8 +13,8 @@ export default function appLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="dashboard" options={{ headerShown: false }} />
-        <Stack.Screen name="not_found" />
+        <Stack.Screen name="dashboardd" options={{ headerShown: false }} />
+        <Stack.Screen name="sexy" />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
