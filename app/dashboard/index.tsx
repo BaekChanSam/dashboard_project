@@ -1,10 +1,10 @@
+import QuestionList from "@/components/question_list/question_list";
+import TrainingManagement from "@/components/training_management/training_management";
+import TrainingStats from "@/components/training_stats/training_stats";
+import UsageChart from "@/components/usage_chart/usageChart";
+import UserList from "@/components/user_list/userList";
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import UsageChart from "@/src/usage_chart/usageChart";
-import TrainingStats from "@/components/training_stats/training_stats";
-import QuestionList from "@/components/question_list/question_list";
-import UserList from "@/src/user_list/userList";
-import TrainingManagement from "@/components/training_management/training_management";
 
 export default function Dashboard() {
   return (

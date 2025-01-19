@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   header: {
-    height: 60,
     backgroundColor: "#fff",
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",

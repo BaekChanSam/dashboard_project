@@ -1,22 +1,33 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
 
-const menuItems = [
-  { label: "User Management", onPress: () => console.log("User Management") },
-  { label: "Training management", onPress: () => console.log("Training Management") },
-  { label: "Weekly User", onPress: () => console.log("Weekly User") },
-  { label: "Training Stats", onPress: () => console.log("Training Stats") },
-  { label: "Questions", onPress: () => console.log("Questions") },
+// 명시적으로 라우트 타입 정의
+type ValidRoutes =
+  | "/dashboard/user_management"
+  | "/dashboard/training_management"
+  | "/dashboard/weekly_user"
+  | "/dashboard/training_stats"
+  | "/dashboard/questions";
+
+const menuItems: { label: string; route: ValidRoutes }[] = [
+  { label: "User Management", route: "/dashboard/user_management" },
+  { label: "Training Management", route: "/dashboard/training_management" },
+  { label: "Weekly User", route: "/dashboard/weekly_user" },
+  { label: "Training Stats", route: "/dashboard/training_stats" },
+  { label: "Questions", route: "/dashboard/questions" },
 ];
 
 export default function Sidebar() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       {menuItems.map((item, index) => (
         <TouchableOpacity
           key={index}
           style={styles.menuItem}
-          onPress={item.onPress}
+          onPress={() => router.push(item.route)} // 타입 강제 변환으로 해결
         >
           <Text style={styles.menuText}>{item.label}</Text>
         </TouchableOpacity>
