@@ -1,9 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import { Stack } from "expo-router";
 
-export default function Index() {
+export default function QuestionsLayout() {
   return (
     <View style={styles.container}>
+      <Stack />
     </View>
   );
 }
@@ -11,9 +13,6 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#ffffff",
   },
-
 });
