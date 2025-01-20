@@ -1,18 +1,10 @@
+import WeeklyUserPage from "@/src/weekly_user_page/weekly_user_page";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
 
-export default function WeeklyUser() {
+export default function WeeklyUserIndex() {
   return (
-    <View style={styles.container}>
-      <Text>Weekly User Page</Text>
-    </View>
+      <WeeklyUserPage />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+

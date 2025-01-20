@@ -10,7 +10,6 @@ export default function Layout() {
 
   useEffect(() => {
     const prepare = async () => {
-      await SplashScreen.preventAutoHideAsync(); // 스플래시 화면 유지
       router.replace("/dashboard");
     };
     prepare();

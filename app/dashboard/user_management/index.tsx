@@ -1,18 +1,11 @@
+import UserManagementPage from "@/src/user_anagement_page/user_anagement_page";
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
-export default function UserManagement() {
+export default function UserManagementIndex() {
   return (
-    <View style={styles.container}>
-      <Text>User Management Page</Text>
-    </View>
+      <UserManagementPage />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+

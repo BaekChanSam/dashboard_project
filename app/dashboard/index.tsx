@@ -6,7 +6,7 @@ import UserList from "@/components/user_list/userList";
 import React from "react";
 import { View, StyleSheet } from "react-native";
 
-export default function Dashboard() {
+export default function DashboardIndex() {
   return (
     <View style={styles.mainContent}>
       {/* 상단 2개 컴포넌트 */}

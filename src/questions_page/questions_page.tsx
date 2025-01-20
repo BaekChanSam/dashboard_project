@@ -1,10 +1,10 @@
  import React from "react";
  import { View, Text, StyleSheet } from "react-native";
  
- export default function TrainingManagementPage() {
+ export default function QuestionsPage() {
    return (
      <View style={styles.container}>
-       <Text style={styles.text}>This is the Training Management Page</Text>
+       <Text style={styles.text}>This is the Questions Page</Text>
      </View>
    );
  }

@@ -27,7 +27,7 @@ export default function Sidebar() {
         <TouchableOpacity
           key={index}
           style={styles.menuItem}
-          onPress={() => router.push(item.route)} // 타입 강제 변환으로 해결
+          onPress={() => router.push(item.route)}
         >
           <Text style={styles.menuText}>{item.label}</Text>
         </TouchableOpacity>
