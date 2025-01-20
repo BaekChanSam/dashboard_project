@@ -27,7 +27,7 @@ export default function Sidebar() {
         <TouchableOpacity
           key={index}
           style={styles.menuItem}
-          onPress={() => router.push(item.route)}
+          onPress={() => router.push(item.route)} 
         >
           <Text style={styles.menuText}>{item.label}</Text>
         </TouchableOpacity>
