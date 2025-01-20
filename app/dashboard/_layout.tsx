@@ -20,7 +20,8 @@ export default function DashboardLayout() {
 
         {/* 페이지 컨텐츠 */}
         <View style={styles.content}>
-          <Stack />
+        <Stack screenOptions={{ headerShown: false }} />
+        
         </View>
       </View>
     </View>
@@ -52,3 +53,6 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+
+
+
