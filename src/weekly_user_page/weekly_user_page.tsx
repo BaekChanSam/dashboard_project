@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f5f5f5",
   },
   title: {
     fontSize: 24,
@@ -41,11 +40,14 @@ const styles = StyleSheet.create({
   chartContainer: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center", // 수평 가운데 정렬
+    alignItems: "center", // 수직 가운데 정렬
+    flexWrap: "wrap", // 차트가 화면 크기에 따라 줄바꿈
   },
   chart: {
-    flex: 1,
-    marginHorizontal: 10,
+    width: "45%", // 차트 너비를 동일하게 설정
+    height: 400, // 차트 높이를 동일하게 설정
+    margin: 10, // 차트 간격
     backgroundColor: "#ffffff",
     borderRadius: 10,
     padding: 10,

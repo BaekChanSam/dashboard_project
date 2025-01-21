@@ -1,22 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
-const hourlyData = [
-  { hour: "00:00", users: 50 },
-  { hour: "03:00", users: 30 },
-  { hour: "06:00", users: 70 },
-  { hour: "09:00", users: 90 },
-  { hour: "12:00", users: 120 },
-  { hour: "15:00", users: 150 },
-  { hour: "18:00", users: 200 },
-  { hour: "21:00", users: 170 },
-];
+type HourlyData = {
+  hour: string;
+  users: number;
+};
 
 export default function HourlyUserChart() {
+  const [data, setData] = useState<HourlyData[]>([]);
+
+  useEffect(() => {
+    // JSON 데이터를 require로 불러오기
+    const hourlyUsersData: HourlyData[] = require("../../mock/hourly_users.json");
+    setData(hourlyUsersData);
+  }, []);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        data={hourlyData}
+        data={data}
         margin={{ top: 40, right: 50, left: -10, bottom: 20 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
