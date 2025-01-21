@@ -1,25 +1,27 @@
- import React from "react";
- import { View, Text, StyleSheet } from "react-native";
- 
- export default function QuestionsPage() {
-   return (
-     <View style={styles.container}>
-       <Text style={styles.text}>This is the Questions Page</Text>
-     </View>
-   );
- }
- 
- const styles = StyleSheet.create({
-   container: {
-     flex: 1,
-     justifyContent: "center",
-     alignItems: "center",
-     backgroundColor: "#26ff67",
-   },
-   text: {
-     fontSize: 18,
-     fontWeight: "bold",
-     color: "#000000",
-   },
- });
- 
+import QuestionList from "@/components/question_list/question_list";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+
+export default function QuestionsPage() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Questions Page</Text>
+      {/* QuestionList 컴포넌트 호출 */}
+      <QuestionList />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#f5f5f5",
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+});

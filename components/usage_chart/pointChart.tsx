@@ -11,7 +11,7 @@ const data = [
   { day: "Sun", users: 220 },
 ];
 
-export default function UsageChart() {
+export default function PointChart() {
   return (
     <div
       style={{

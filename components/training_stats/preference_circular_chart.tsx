@@ -40,7 +40,7 @@ const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, inde
   );
 };
 
-export default function TrainingStats() {
+export default function PreferenceCircularChart() {
   return (
     <div
       style={{

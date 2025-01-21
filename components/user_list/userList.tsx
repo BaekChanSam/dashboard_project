@@ -1,62 +1,113 @@
-import React from "react";
-import { FlatList, View, Text, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 
-const users = [
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-  "Isaac", "Jack", "Katie", "Liam", "Mona", "Nate", "Olivia", "Paul", "Quinn",
-];
+type User = {
+  id: string;
+  name: string;
+  age: number;
+  joinedDate: string;
+  isActive: boolean;
+};
 
 export default function UserList() {
+  const [users, setUsers] = useState<User[]>([
+    { id: "1", name: "John Doe", age: 30, joinedDate: "2023-01-15", isActive: true },
+    { id: "2", name: "Jane Smith", age: 25, joinedDate: "2023-05-20", isActive: false },
+    { id: "3", name: "Alex Johnson", age: 40, joinedDate: "2022-12-01", isActive: true },
+    { id: "4", name: "Emily Davis", age: 28, joinedDate: "2023-03-10", isActive: false },
+    { id: "5", name: "Michael Brown", age: 35, joinedDate: "2022-11-05", isActive: true },
+  ]);
+
+  const toggleAccountStatus = (id: string) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === id ? { ...user, isActive: !user.isActive } : user
+      )
+    );
+  };
+
+  const renderUserItem = ({ item }: { item: User }) => (
+    <View style={styles.userItem}>
+      <Text style={styles.userInfo}>
+        <Text style={styles.label}>Name:</Text> {item.name}
+      </Text>
+      <Text style={styles.userInfo}>
+        <Text style={styles.label}>Age:</Text> {item.age}
+      </Text>
+      <Text style={styles.userInfo}>
+        <Text style={styles.label}>Joined:</Text> {item.joinedDate}
+      </Text>
+      <TouchableOpacity
+        style={[styles.button, item.isActive ? styles.activeButton : styles.inactiveButton]}
+        onPress={() => toggleAccountStatus(item.id)}
+      >
+        <Text style={styles.buttonText}>
+          {item.isActive ? "Deactivate" : "Activate"}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.container}>
-        <FlatList
-          data={users}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
-            <View style={styles.userContainer}>
-              <Text style={styles.userText}>{index + 1}. {item}</Text>
-            </View>
-          )}
-          contentContainerStyle={styles.flatListContainer} // 수정된 부분
-        />
-      </View>
+    <View style={styles.container}>
+      <FlatList
+        data={users}
+        keyExtractor={(item) => item.id}
+        renderItem={renderUserItem}
+        contentContainerStyle={styles.listContainer}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    justifyContent: "flex-start", // 리스트를 위로 정렬
-    alignItems: "center", // 가로 중앙 정렬
-    padding: 16,
-    backgroundColor: "#f8f8f8", // 배경색 (확인용)
-  },
   container: {
-    width: "100%", // 너비를 100%로 설정하여 화면 크기에 맞추기
-    maxHeight: 400, // 최대 높이 설정
-    borderWidth: 1, // 테두리 추가 (시각적으로 박스를 구분)
-    borderColor: "#ccc",
-    borderRadius: 8,
-    overflow: "hidden", // 경계선 넘어가는 부분 숨김
-    backgroundColor: "#ffcc00",
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#f5f5f5", // 배경색
   },
-  flatListContainer: {
-    // contentContainerStyle 스타일을 ViewStyle로 변경
-    flexGrow: 1,
-    paddingVertical: 16,
-    paddingHorizontal: 8, // 가로 여백
-    justifyContent: "flex-start", // 내용 상단 정렬
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
   },
-  userContainer: {
-    marginVertical: 8,
+  listContainer: {
+    paddingBottom: 20,
   },
-  userText: {
-    fontSize: 18,
-    color: "#333",
+  userItem: {
+    backgroundColor: "#ffffff",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  userInfo: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: "#333333",
+  },
+  label: {
+    fontWeight: "bold",
+  },
+  button: {
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  activeButton: {
+    backgroundColor: "#ff6666", // 비활성화 버튼 색상
+  },
+  inactiveButton: {
+    backgroundColor: "#66cc66", // 활성화 버튼 색상
+  },
+  buttonText: {
+    color: "#ffffff",
+    fontWeight: "bold",
   },
 });

@@ -5,7 +5,7 @@ import { Stack } from "expo-router";
 export default function TrainingStatsLayout() {
   return (
     <View style={styles.container}>
-      <Stack />
+       <Stack screenOptions={{ headerShown: false }} />
     </View>
   );
 }
