@@ -1,75 +1,58 @@
-import UsageChart from "@/components/usage_chart/usageChart";
+import HourlyUserChart from "@/components/usage_chart/hourlyUserChart";
+import PointChart from "@/components/usage_chart/pointChart";
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
-// 시간대별 사용자 데이터
-const hourlyData = [
-  { hour: "00:00", users: 50 },
-  { hour: "03:00", users: 30 },
-  { hour: "06:00", users: 70 },
-  { hour: "09:00", users: 90 },
-  { hour: "12:00", users: 120 },
-  { hour: "15:00", users: 150 },
-  { hour: "18:00", users: 200 },
-  { hour: "21:00", users: 170 },
-];
+import { View, Text, StyleSheet } from "react-native";
 
 export default function WeeklyUserPage() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        height: "100vh",
-        padding: "20px",
-        boxSizing: "border-box",
-      }}
-    >
-      {/* 왼쪽: UsageChart 호출 */}
-      <div style={{ flex: 1, marginRight: "20px", height: "100%" }}>
-        <UsageChart />
-      </div>
+    <View style={styles.container}>
+      {/* 페이지 제목 */}
+      <Text style={styles.title}>Weekly User Page</Text>
 
-      {/* 오른쪽: 시간대별 사용자 수 막대 그래프 */}
-      <div style={{ flex: 1, height: "100%" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-            height: "51vh", // 라인 차트와 같은 높이
-            border: "1px solid #ccc",
-            backgroundColor: "#f9f9f9",
-          }}
-        >
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart
-              data={hourlyData}
-              margin={{ top: 40, right: 50, left: -10, bottom: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="hour" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="users" fill="#8884d8" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-    </div>
+      {/* 차트 컨테이너 */}
+      <View style={styles.chartContainer}>
+        {/* 주간 사용자 라인 차트 */}
+        <View style={styles.chart}>
+          <PointChart />
+        </View>
+
+        {/* 시간대별 사용자 바 차트 */}
+        <View style={styles.chart}>
+          <HourlyUserChart />
+        </View>
+      </View>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#f5f5f5",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 20,
+    color: "#333",
+  },
+  chartContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  chart: {
+    flex: 1,
+    marginHorizontal: 10,
+    backgroundColor: "#ffffff",
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+});

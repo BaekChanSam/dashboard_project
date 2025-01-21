@@ -1,77 +1,38 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Dimensions } from "react-native";
-
-type Game = {
-  id: string;
-  name: string;
-  isActive: boolean;
-};
-
-const categories = [
-  { key: "brain", title: "두뇌 운동" },
-  { key: "body", title: "신체 운동" },
-  { key: "mindfulness", title: "마음 챙김" },
-  { key: "health", title: "건강 수업" },
-  { key: "selfTest", title: "자가 검사" },
-];
-
-const gamesData: Record<string, Game[]> = {
-  brain: [
-    { id: "1", name: "Memory Puzzle", isActive: true },
-    { id: "2", name: "Quick Math", isActive: false },
-  ],
-  body: [
-    { id: "3", name: "Yoga Trainer", isActive: true },
-    { id: "4", name: "Fitness Quest", isActive: true },
-  ],
-  mindfulness: [
-    { id: "5", name: "Meditation Guide", isActive: false },
-    { id: "6", name: "Breathing Exercise", isActive: true },
-  ],
-  health: [
-    { id: "7", name: "Diet Tracker", isActive: false },
-    { id: "8", name: "Healthy Recipes", isActive: true },
-  ],
-  selfTest: [
-    { id: "9", name: "Stress Level Test", isActive: true },
-    { id: "10", name: "Sleep Quality Test", isActive: false },
-  ],
-};
-
-const { width, height } = Dimensions.get("window");
+import React from "react";
+import { View, FlatList, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useTrainingData } from "@/components/training_management/training_data_context";
 
 export default function TrainingManagementPage() {
-  const [games, setGames] = useState<Record<string, Game[]>>(gamesData);
+  const { categories, gamesData, toggleGameStatus } = useTrainingData();
 
-  const toggleGameStatus = (category: string, id: string) => {
-    setGames((prevGames) => ({
-      ...prevGames,
-      [category]: prevGames[category].map((game) =>
-        game.id === id ? { ...game, isActive: !game.isActive } : game
-      ),
-    }));
-  };
-
-  const renderGameItem = (category: string, game: Game) => (
-    <View key={game.id} style={styles.gameItem}>
-      <Text style={styles.gameName}>{game.name}</Text>
-      <TouchableOpacity
-        style={[styles.button, game.isActive ? styles.activeButton : styles.inactiveButton]}
-        onPress={() => toggleGameStatus(category, game.id)}
-      >
-        <Text style={styles.buttonText}>{game.isActive ? "Deactivate" : "Activate"}</Text>
-      </TouchableOpacity>
+  const renderGameItem = (categoryKey: string, game: { id: string; name: string; isActive: boolean }) => (
+    <View key={game.id} style={styles.itemContainer}>
+      <Text style={styles.label}>{game.name}</Text>
+      <View style={styles.radioButtons}>
+        <TouchableOpacity
+          style={[styles.radioButton, game.isActive && styles.selected]}
+          onPress={() => toggleGameStatus(categoryKey, game.id)}
+        >
+          <Text style={styles.radioButtonText}>True</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.radioButton, !game.isActive && styles.selected]}
+          onPress={() => toggleGameStatus(categoryKey, game.id)}
+        >
+          <Text style={styles.radioButtonText}>False</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 
   const renderCategorySection = (category: { key: string; title: string }) => (
-    <View key={category.key} style={styles.categorySection}>
+    <View key={category.key} style={styles.categoryContainer}>
       <Text style={styles.categoryTitle}>{category.title}</Text>
       <FlatList
-        data={games[category.key]}
+        data={gamesData[category.key]}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => renderGameItem(category.key, item)}
-        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.flatListContainer}
       />
     </View>
   );
@@ -101,53 +62,60 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
-    height: "50%", // 상단과 하단 각각 50% 높이
+    height: "50%", // 각 행의 높이 비율
   },
-  categorySection: {
+  categoryContainer: {
     flex: 1,
     marginHorizontal: 5,
     backgroundColor: "#ffffff",
     borderRadius: 10,
+    padding: 10,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    overflow: "hidden",
-    padding: 10,
   },
   categoryTitle: {
     fontSize: 16,
     fontWeight: "bold",
     marginBottom: 10,
-    color: "#333333",
+    color: "#333",
     textAlign: "center",
   },
-  gameItem: {
+  flatListContainer: {
+    paddingBottom: 10,
+  },
+  itemContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     paddingVertical: 8,
     borderBottomWidth: 1,
-    borderBottomColor: "#dddddd",
+    borderBottomColor: "#ddd",
   },
-  gameName: {
+  label: {
+    flex: 1,
     fontSize: 14,
-    color: "#333333",
+    color: "#333",
   },
-  button: {
+  radioButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioButton: {
     paddingVertical: 6,
     paddingHorizontal: 12,
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginHorizontal: 5,
   },
-  activeButton: {
-    backgroundColor: "#ff6666",
+  selected: {
+    backgroundColor: "#4caf50",
   },
-  inactiveButton: {
-    backgroundColor: "#66cc66",
-  },
-  buttonText: {
-    color: "#ffffff",
+  radioButtonText: {
+    fontSize: 14,
+    color: "#fff",
     fontWeight: "bold",
   },
 });

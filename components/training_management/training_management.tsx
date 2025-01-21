@@ -1,101 +1,57 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-
-const items = [
-  { label: "Item 1", value: false },
-  { label: "Item 2", value: true },
-  { label: "Item 3", value: false },
-  { label: "Item 4", value: true },
-  { label: "Item 5", value: false },
-
-];
-
-type SelectedValues = {
-  [key: string]: boolean;
-};
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { useTrainingData } from "@/components/training_management/training_data_context";
 
 export default function TrainingManagement() {
-  const [selectedValues, setSelectedValues] = useState<SelectedValues>(
-    items.reduce((acc, item) => {
-      acc[item.label] = item.value;
-      return acc;
-    }, {} as SelectedValues)
+  const { categories, gamesData, toggleGameStatus } = useTrainingData();
+
+  // 예제: 랜덤 카테고리 선택
+  const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+  const randomGames = gamesData[randomCategory.key];
+
+  const renderGame = (game: { id: string; name: string; isActive: boolean }) => (
+    <View key={game.id} style={styles.itemContainer}>
+      <Text style={styles.label}>{game.name}</Text>
+      <Text style={styles.status}>{game.isActive ? "Active" : "Inactive"}</Text>
+    </View>
   );
 
-  const handleToggle = (label: string) => {
-    setSelectedValues((prevValues) => ({
-      ...prevValues,
-      [label]: !prevValues[label],
-    }));
-  };
-
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {items.map((item) => (
-        <View style={styles.itemContainer} key={item.label}>
-          <Text style={styles.label}>{item.label}</Text>
-          <View style={styles.radioButtons}>
-            <TouchableOpacity
-              style={[
-                styles.radioButton,
-                selectedValues[item.label] === true && styles.selected,
-              ]}
-              onPress={() => handleToggle(item.label)}
-            >
-              <Text style={styles.radioButtonText}>True</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[
-                styles.radioButton,
-                selectedValues[item.label] === false && styles.selected,
-              ]}
-              onPress={() => handleToggle(item.label)}
-            >
-              <Text style={styles.radioButtonText}>False</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      <Text style={styles.title}>{randomCategory.title}</Text>
+      {randomGames.map((game) => renderGame(game))}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 16,
     backgroundColor: "#f8f8f8",
   },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 16,
+  },
   itemContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
     backgroundColor: "#fff",
+    padding: 10,
+    marginBottom: 10,
     borderRadius: 8,
-    padding: 16,
     borderWidth: 1,
     borderColor: "#ccc",
   },
   label: {
-    flex: 1,
     fontSize: 16,
-    color: "#333",
+    flex: 1,
   },
-  radioButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  radioButton: {
-    padding: 8,
-    marginHorizontal: 8,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-  },
-  selected: {
-    backgroundColor: "#4caf50", // Green color for selected state
-  },
-  radioButtonText: {
+  status: {
     fontSize: 14,
-    color: "#333",
+    color: "#666",
   },
 });

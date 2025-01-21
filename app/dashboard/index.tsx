@@ -1,7 +1,8 @@
 import QuestionList from "@/components/question_list/question_list";
 import TrainingManagement from "@/components/training_management/training_management";
-import TrainingStats from "@/components/training_stats/training_stats";
-import UsageChart from "@/components/usage_chart/usageChart";
+import PreferenceCircularChart from "@/components/training_stats/preference_circular_chart";
+import TrainingStats from "@/components/training_stats/preference_circular_chart";
+import PointChart from "@/components/usage_chart/pointChart";
 import UserList from "@/components/user_list/userList";
 import React from "react";
 import { View, StyleSheet } from "react-native";
@@ -12,10 +13,10 @@ export default function DashboardIndex() {
       {/* 상단 2개 컴포넌트 */}
       <View style={styles.topRow}>
         <View style={styles.leftComponent}>
-          <UsageChart />
+          <PointChart />
         </View>
         <View style={styles.rightComponent}>
-          <TrainingStats />
+          <PreferenceCircularChart />
         </View>
       </View>
 
