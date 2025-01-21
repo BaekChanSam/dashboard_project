@@ -1,0 +1,18 @@
+[
+    { "id": "1", "title": "How to reset password?", "author": "John Doe", "date": "21/03/21 00:00:00" },
+    { "id": "2", "title": "Mobile version of app?", "author": "Jane Smith", "date": "21/03/21 00:00:00" },
+    { "id": "3", "title": "Update profile info?", "author": "Alex Johnson", "date": "21/03/21 00:00:00" },
+    { "id": "4", "title": "Delete account permanently?", "author": "Emily Davis", "date": "21/03/21 00:00:00" },
+    { "id": "5", "title": "Refund policy?", "author": "Michael Brown", "date": "21/03/21 00:00:00" },
+    { "id": "6", "title": "How to change username?", "author": "Chris White", "date": "21/03/21 00:00:00" },
+    { "id": "7", "title": "How to enable notifications?", "author": "Anna Lee", "date": "21/03/21 00:00:00" },
+    { "id": "8", "title": "Steps to verify email?", "author": "George King", "date": "21/03/21 00:00:00" },
+    { "id": "9", "title": "Why is my app crashing?", "author": "Sophie Adams", "date": "21/03/21 00:00:00" },
+    { "id": "10", "title": "How to download data?", "author": "Mark Brown", "date": "21/03/21 00:00:00" },
+    { "id": "11", "title": "Is there a dark mode?", "author": "Paul Green", "date": "21/03/21 00:00:00" },
+    { "id": "12", "title": "What is the app's privacy policy?", "author": "Olivia Scott", "date": "21/03/21 00:00:00" },
+    { "id": "13", "title": "How to contact support?", "author": "Lucas Wright", "date": "21/03/21 00:00:00" },
+    { "id": "14", "title": "Can I use this offline?", "author": "Emma Turner", "date": "21/03/21 00:00:00" },
+    { "id": "15", "title": "How to report a bug?", "author": "Jack Harris", "date": "21/03/21 00:00:00" }
+  ]
+  
