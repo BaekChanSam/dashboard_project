@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const popularGames = [
-  { name: "Popular Game 1", score: 95 },
-  { name: "Popular Game 2", score: 90 },
-  { name: "Popular Game 3", score: 85 },
-  { name: "Popular Game 4", score: 80 },
-];
-
-const unpopularGames = [
-  { name: "Unpopular Game 1", score: 40 },
-  { name: "Unpopular Game 2", score: 35 },
-  { name: "Unpopular Game 3", score: 30 },
-  { name: "Unpopular Game 4", score: 25 },
-];
+type Game = {
+  name: string;
+  count: number;
+};
 
 export default function PopularCardList() {
+  const [popularGames, setPopularGames] = useState<Game[]>([]);
+  const [unpopularGames, setUnpopularGames] = useState<Game[]>([]);
+
+  useEffect(() => {
+    // JSON 파일을 require로 로드
+    const trainingCount: Game[] = require("../../mock/training_count.json");
+
+    // 데이터를 count 기준으로 정렬 후 상위 4개와 하위 4개로 분리
+    const sortedGames = [...trainingCount].sort((a, b) => b.count - a.count);
+    setPopularGames(sortedGames.slice(0, 4)); // 상위 4개
+    setUnpopularGames(sortedGames.slice(-4)); // 하위 4개
+  }, []);
+
   return (
     <View style={styles.container}>
       {/* 인기 게임 리스트 */}
@@ -25,7 +29,7 @@ export default function PopularCardList() {
           {popularGames.map((game, index) => (
             <View key={index} style={styles.card}>
               <Text style={styles.cardTitle}>{game.name}</Text>
-              <Text style={styles.cardText}>Score: {game.score}</Text>
+              <Text style={styles.cardText}>Count: {game.count}</Text>
             </View>
           ))}
         </View>
@@ -38,7 +42,7 @@ export default function PopularCardList() {
           {unpopularGames.map((game, index) => (
             <View key={index} style={styles.card}>
               <Text style={styles.cardTitle}>{game.name}</Text>
-              <Text style={styles.cardText}>Score: {game.score}</Text>
+              <Text style={styles.cardText}>Count: {game.count}</Text>
             </View>
           ))}
         </View>
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   card: {
-    width: "48%", // 두 개의 카드가 한 줄에 나란히 배치되도록 설정
+    width: "48%",
     padding: 10,
     borderWidth: 1,
     borderColor: "#ccc",

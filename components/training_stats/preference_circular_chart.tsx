@@ -1,46 +1,72 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import trainingCount from "../../mock/training_count.json"; // JSON 데이터 import
 
-const rawData = [
-  { name: "Game A", value: 400 },
-  { name: "Game B", value: 500 },
-  { name: "Game C", value: 300 },
-  { name: "Game D", value: 600 },
-  { name: "Others", value: 200 },
-];
+// Training 타입 정의
+type Training = {
+  name: string;
+  count: number;
+};
 
-// 데이터 총합 계산
-const total = rawData.reduce((sum, item) => sum + item.value, 0);
-
-// 백분율 데이터 생성
-const data = rawData.map((item) => ({
-  ...item,
-  percentage: ((item.value / total) * 100).toFixed(1), // 백분율 계산
-}));
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A"];
-
-// 라벨 표시 함수
-const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) / 2; // 반지름 계산
-  const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180)); // x좌표 계산
-  const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180)); // y좌표 계산
-
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white" // 텍스트 색상
-      textAnchor="middle"
-      dominantBaseline="central"
-      style={{ fontSize: "12px", fontWeight: "bold" }}
-    >
-      {`${data[index].percentage}%`}
-    </text>
-  );
+// percentage 필드를 포함하는 새로운 타입 정의
+type TrainingWithPercentage = Training & {
+  percentage: string;
 };
 
 export default function PreferenceCircularChart() {
+  const [data, setData] = useState<TrainingWithPercentage[]>([]);
+  const [total, setTotal] = useState<number>(0);
+
+  useEffect(() => {
+    // JSON 데이터를 상태로 설정
+    const rawData: Training[] = trainingCount;
+
+    // 데이터 총합 계산
+    const totalValue = rawData.reduce((sum, item) => sum + item.count, 0);
+    setTotal(totalValue);
+
+    // 데이터를 count 기준으로 정렬 후 상위 4개와 나머지 합산
+    const sortedData = [...rawData].sort((a, b) => b.count - a.count);
+    const top4 = sortedData.slice(0, 4); // 상위 4개
+    const othersCount = sortedData.slice(4).reduce((sum, item) => sum + item.count, 0); // 나머지 합산
+
+    // 백분율 데이터 추가
+    const processedData: TrainingWithPercentage[] = [
+      ...top4.map((item) => ({
+        ...item,
+        percentage: ((item.count / totalValue) * 100).toFixed(1),
+      })),
+      {
+        name: "이외",
+        count: othersCount,
+        percentage: ((othersCount / totalValue) * 100).toFixed(1),
+      },
+    ];
+    setData(processedData);
+  }, []);
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A"];
+
+  // 라벨 표시 함수
+  const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, index }: any) => {
+    const radius = innerRadius + (outerRadius - innerRadius) / 2; // 반지름 계산
+    const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180)); // x좌표 계산
+    const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180)); // y좌표 계산
+
+    return (
+      <text
+        x={x}
+        y={y}
+        fill="white" // 텍스트 색상
+        textAnchor="middle"
+        dominantBaseline="central"
+        style={{ fontSize: "12px", fontWeight: "bold" }}
+      >
+        {`${data[index].percentage}%`}
+      </text>
+    );
+  };
+
   return (
     <div
       style={{
@@ -62,7 +88,7 @@ export default function PreferenceCircularChart() {
             cy="50%"
             outerRadius={150}
             fill="#8884d8"
-            dataKey="value"
+            dataKey="count"
             label={renderLabel} // 라벨 함수 적용
             labelLine={false} // 라벨 라인 제거
           >

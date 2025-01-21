@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import questionsData from "../../mock/questions.json"; // import로 JSON 데이터를 불러오기
 
+// Question 타입 정의
 type Question = {
   id: string;
   title: string;
@@ -8,16 +10,13 @@ type Question = {
   date: string;
 };
 
-const questionsData: Question[] = [
-  { id: "1", title: "How to reset password?", author: "John Doe", date: "21/03/21 00:00:00" },
-  { id: "2", title: "Mobile version of app?", author: "Jane Smith", date: "21/03/21 00:00:00" },
-  { id: "3", title: "Update profile info?", author: "Alex Johnson", date: "21/03/21 00:00:00" },
-  { id: "4", title: "Delete account permanently?", author: "Emily Davis", date: "21/03/21 00:00:00" },
-  { id: "5", title: "Refund policy?", author: "Michael Brown", date: "21/03/21 00:00:00" },
-];
-
 export default function QuestionList() {
-  const [questions, setQuestions] = useState<Question[]>(questionsData);
+  const [questions, setQuestions] = useState<Question[]>([]);
+
+  useEffect(() => {
+    // JSON 데이터를 상태로 설정
+    setQuestions(questionsData);
+  }, []);
 
   const handleDelete = (id: string) => {
     setQuestions((prevQuestions) => prevQuestions.filter((question) => question.id !== id));
@@ -34,6 +33,7 @@ export default function QuestionList() {
       </TouchableOpacity>
     </View>
   );
+
   return (
     <View style={styles.container}>
       {/* 테이블 헤더 */}

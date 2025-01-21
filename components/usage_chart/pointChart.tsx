@@ -1,31 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-const data = [
-  { day: "Mon", users: 120 },
-  { day: "Tue", users: 200 },
-  { day: "Wed", users: 150 },
-  { day: "Thu", users: 170 },
-  { day: "Fri", users: 300 },
-  { day: "Sat", users: 250 },
-  { day: "Sun", users: 220 },
-];
+// 타입 정의
+type UserData = {
+  day: string;
+  users: number;
+};
 
 export default function PointChart() {
+  const [data, setData] = useState<UserData[]>([]);
+
+  useEffect(() => {
+    // JSON 데이터를 require로 불러오고 타입 단언 적용
+    const weeklyUsersData: UserData[] = require("../../mock/weekly_users.json");
+    setData(weeklyUsersData);
+  }, []);
+
   return (
     <div
       style={{
-        display: "flex", // 플렉스 박스 설정
-        justifyContent: "flex-start", // 왼쪽 정렬
-        alignItems: "center", // 세로 중앙 정렬
-        width: "100%", // 전체 화면 너비
-        height: "51vh", // 화면 높이에 비례한 크기
-        border: "1px solid #ccc", // 테두리 추가 (시각적 구분)
-        boxSizing: "border-box",
-        backgroundColor: "#f9f9f9", // 배경색 추가
+        display: "flex",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        width: "100%",
+        height: "51vh",
+        border: "1px solid #ccc",
+        backgroundColor: "#f9f9f9",
       }}
     >
-      {/* ResponsiveContainer를 사용하여 크기를 자동 조정 */}
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}

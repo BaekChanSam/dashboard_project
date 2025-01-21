@@ -1,0 +1,11 @@
+[
+    { "id": "1", "name": "윤대호", "age": 62, "joinedDate": "2023-01-15", "isActive": true },
+    { "id": "2", "name": "박정빈", "age": 73, "joinedDate": "2023-05-20", "isActive": false },
+    { "id": "3", "name": "윤이준", "age": 70, "joinedDate": "2022-12-01", "isActive": true },
+    { "id": "4", "name": "정욱", "age": 68, "joinedDate": "2023-03-10", "isActive": false },
+    { "id": "5", "name": "박승빈", "age": 69, "joinedDate": "2022-03-28", "isActive": true },
+    { "id": "6", "name": "이민성", "age": 81, "joinedDate": "2022-11-11", "isActive": false },
+    { "id": "7", "name": "김명수", "age": 85, "joinedDate": "2022-02-05", "isActive": true },
+    { "id": "8", "name": "장예진", "age": 61, "joinedDate": "2022-06-11", "isActive": false }
+  ]
+  
