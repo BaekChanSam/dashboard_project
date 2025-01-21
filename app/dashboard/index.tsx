@@ -1,5 +1,6 @@
 import QuestionList from "@/components/question_list/question_list";
-import TrainingManagement from "@/components/training_management/training_management";
+import TrainingSingleManagement from "@/components/training_management/training_single_management";
+import TrainingManagement from "@/components/training_management/training_single_management";
 import PreferenceCircularChart from "@/components/training_stats/preference_circular_chart";
 import TrainingStats from "@/components/training_stats/preference_circular_chart";
 import PointChart from "@/components/usage_chart/pointChart";
@@ -29,7 +30,7 @@ export default function DashboardIndex() {
           <UserList />
         </View>
         <View style={styles.rightComponent}>
-          <TrainingManagement />
+          <TrainingSingleManagement />
         </View>
       </View>
     </View>
