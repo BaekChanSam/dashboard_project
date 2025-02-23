@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import usersData from "../../mock/mock_users.json";
+import { Activity, Airplay } from '@tamagui/lucide-icons'
+import { Button } from "tamagui";
 
 type User = {
   id: string;
@@ -53,8 +55,7 @@ export default function UserList() {
         <Text style={styles.label}>Joined:</Text> {item.joinedDate}
       </Text>
 
-      {/* 활성화/비활성화 버튼 */}
-      <TouchableOpacity
+      <Button
         style={[styles.button, item.isActive ? styles.activeButton : styles.inactiveButton]}
         // 버튼 클릭 시 상태 토글
         onPress={() => toggleAccountStatus(item.id)}
@@ -63,7 +64,7 @@ export default function UserList() {
           {/* 상태에 따라 버튼 텍스트 변경 */}
           {item.isActive ? "Deactivate" : "Activate"}
         </Text>
-      </TouchableOpacity>
+      </Button>
     </View>
   );
 

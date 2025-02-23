@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import trainingCount from "../../mock/training_count.json"; // JSON 데이터 import
+import { View, Text } from "react-native";
 
 // Training 타입 정의
 type Training = {
@@ -13,9 +14,8 @@ type TrainingWithPercentage = Training & {
   percentage: string;
 };
 
-export default function PreferenceCircularChart() {
+export default function PreferenceCircularChart({enableChartLabel}: { enableChartLabel? : boolean}) {
   const [data, setData] = useState<TrainingWithPercentage[]>([]);
-  const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     // JSON 데이터를 상태로 설정
@@ -23,7 +23,7 @@ export default function PreferenceCircularChart() {
 
     // 데이터 총합 계산
     const totalValue = rawData.reduce((sum, item) => sum + item.count, 0);
-    setTotal(totalValue);
+
 
     // 데이터를 count 기준으로 정렬 후 상위 4개와 나머지 합산
     const sortedData = [...rawData].sort((a, b) => b.count - a.count);
@@ -48,10 +48,20 @@ export default function PreferenceCircularChart() {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A"];
 
   // 라벨 표시 함수
-  const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, index }: any) => {
+  const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, index }:  { cx: number , cy: number, midAngle: number, innerRadius:number, outerRadius:number, index:number}) => {
     const radius = innerRadius + (outerRadius - innerRadius) / 2; // 반지름 계산
     const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180)); // x좌표 계산
     const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180)); // y좌표 계산
+
+    return (
+      <Text style={[{   position: "absolute",
+        color: "white", // 텍스트 색상
+        fontSize: 12,
+        fontWeight: "bold",
+        textAlign: "center",}, { left: x, top: y }]}>
+      {`${data[index].percentage}%`}
+    </Text>
+    )
 
     return (
       <text
@@ -68,19 +78,19 @@ export default function PreferenceCircularChart() {
   };
 
   return (
-    <div
+    <View
       style={{
         display: "flex", // 가로 배치
         justifyContent: "center", // 전체 가로 중앙 정렬
         alignItems: "center", // 세로 중앙 정렬
         width: "100%", // 상단 오른쪽 영역의 너비에 맞추기
         height: "100%", // 상단 오른쪽 영역의 높이에 맞추기
-        padding: "20px",
-        boxSizing: "border-box",
+        padding: 20,
+        // boxSizing: "border-box",
       }}
     >
       {/* 원형 차트 */}
-      <div style={{ marginRight: "20px" }}> {/* 차트와 설명 사이 간격 */}
+      <View style={{ marginRight: 20 }}> {/* 차트와 설명 사이 간격 */}
         <PieChart width={400} height={400}>
           <Pie
             data={data}
@@ -98,33 +108,35 @@ export default function PreferenceCircularChart() {
           </Pie>
           <Tooltip /> {/* 툴팁 추가 */}
         </PieChart>
-      </div>
+      </View>
 
       {/* 색상별 설명 */}
-      <div>
-        {data.map((entry, index) => (
-          <div
-            key={`label-${index}`}
+    {enableChartLabel && ( 
+      <View>
+      {data.map((entry, index) => (
+        <View
+          key={`label-${index}`}
+          style={{
+            flexDirection:"row",
+            alignItems: "center",
+            marginBottom: 8,
+          }}
+        >
+          {/* 색상 사각형 */}
+          <View
             style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "8px",
+              width: 16,
+              height: 16,
+              backgroundColor: COLORS[index % COLORS.length],
+              marginRight: 8,
             }}
-          >
-            {/* 색상 사각형 */}
-            <div
-              style={{
-                width: "16px",
-                height: "16px",
-                backgroundColor: COLORS[index % COLORS.length],
-                marginRight: "8px",
-              }}
-            ></div>
-            {/* 텍스트 */}
-            <span>{`${entry.name}: ${entry.percentage}%`}</span> {/* 백분율 표시 */}
-          </div>
-        ))}
-      </div>
-    </div>
+          />
+          {/* 텍스트 */}
+          <Text>{`${entry.name}: ${entry.percentage}%`}</Text> {/* 백분율 표시 */}
+        </View>
+      ))}
+    </View>
+  )}
+    </View>
   );
 }

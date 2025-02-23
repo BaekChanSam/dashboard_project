@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import trainingData from "../../mock/training_data.json"; // JSON 데이터 import
+import { Button } from "tamagui";
 
 type Category = {
   key: string;
@@ -37,7 +38,7 @@ export default function TrainingMultiManagement() {
     <View key={game.id} style={styles.gameItem}>
       <Text style={styles.gameText}>{game.name}</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
+        <Button
           style={[
             styles.button,
             game.isActive ? styles.activeButton : styles.inactiveButton,
@@ -47,7 +48,7 @@ export default function TrainingMultiManagement() {
           <Text style={styles.buttonText}>
             {game.isActive ? "Deactivate" : "Activate"}
           </Text>
-        </TouchableOpacity>
+        </Button>
       </View>
     </View>
   );

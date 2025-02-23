@@ -13,7 +13,7 @@ export default function TrainingStatsPage() {
       <View style={styles.content}>
         {/* 왼쪽: PreferenceCircularChart */}
         <View style={styles.left}>
-          <PreferenceCircularChart />
+          <PreferenceCircularChart enableChartLabel />
         </View>
 
         {/* 오른쪽: PopularCardList */}

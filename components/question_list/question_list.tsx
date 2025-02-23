@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import questionsData from "../../mock/questions.json"; // import로 JSON 데이터를 불러오기
+import { ToastViewport, useToastController } from "@tamagui/toast";
+import { Toast } from "../toast/toast";
 
 // Question 타입 정의
 type Question = {
@@ -13,6 +15,8 @@ type Question = {
 export default function QuestionList() {
   const [questions, setQuestions] = useState<Question[]>([]);
 
+  const toast = useToastController()
+
   useEffect(() => {
     // JSON 데이터를 상태로 설정
     setQuestions(questionsData);
@@ -20,6 +24,9 @@ export default function QuestionList() {
 
   const handleDelete = (id: string) => {
     setQuestions((prevQuestions) => prevQuestions.filter((question) => question.id !== id));
+
+    toast.show(`number ${id} delete!`)
+
   };
 
   const renderQuestionItem = ({ item }: { item: Question }) => (
@@ -36,6 +43,8 @@ export default function QuestionList() {
 
   return (
     <View style={styles.container}>
+      <ToastViewport flexDirection="column" bottom={10} left={0} right={0}/>
+
       {/* 테이블 헤더 */}
       <View style={[styles.row, styles.header]}>
         <Text style={[styles.cell, styles.centerText]}>번호</Text>
