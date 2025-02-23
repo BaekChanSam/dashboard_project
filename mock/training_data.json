@@ -1,52 +1,51 @@
 {
-    "categories": [
-      { "key": "brain", "title": "두뇌 운동" },
-      { "key": "body", "title": "신체 운동" },
-      { "key": "mindfulness", "title": "마음 챙김" },
-      { "key": "health", "title": "건강 수업" },
-      { "key": "selfTest", "title": "자가 검사" }
+  "categories": [
+    { "key": "brain", "title": "두뇌 운동" },
+    { "key": "body", "title": "신체 운동" },
+    { "key": "mindfulness", "title": "마음 챙김" },
+    { "key": "health", "title": "건강 수업" },
+    { "key": "selfTest", "title": "자가 검사" }
+  ],
+  "gamesData": {
+    "brain": [
+      { "id": "brain1", "name": "이이스크림 가게", "isActive": true },
+      { "id": "brain2", "name": "무지개 멜로디", "isActive": false },
+      { "id": "brain3", "name": "추적 24시", "isActive": false },
+      { "id": "brain4", "name": "심야식당", "isActive": true },
+      { "id": "brain5", "name": "탐정 너구리", "isActive": true },
+      { "id": "brain6", "name": "보물찾기", "isActive": false }
     ],
-    "gamesData": {
-      "brain": [
-        { "id": "brain1", "name": "이이스크림 가게", "isActive": true },
-        { "id": "brain2", "name": "무지개 멜로디", "isActive": false },
-        { "id": "brain3", "name": "추적 24시", "isActive": false },
-        { "id": "brain4", "name": "심야식당", "isActive": true },
-        { "id": "brain5", "name": "탐정 너구리", "isActive": true },
-        { "id": "brain6", "name": "보물찾기", "isActive": false }
-      ],
-      "body": [
-        { "id": "body1", "name": "제자리 걷기", "isActive": false },
-        { "id": "body2", "name": "도리도리", "isActive": true },
-        { "id": "body3", "name": "목돌리기", "isActive": true },
-        { "id": "body4", "name": "갸우뚱하기", "isActive": false },
-        { "id": "body5", "name": "하늘 땅 보기", "isActive": true },
-        { "id": "body6", "name": "기지개 펴기", "isActive": true }
-      ],
-      "mindfulness": [
-        { "id": "mindfulness1", "name": "감각에 집중하기", "isActive": false },
-        { "id": "mindfulness2", "name": "기본 호흡법", "isActive": false },
-        { "id": "mindfulness3", "name": "신체 이완하기", "isActive": true },
-        { "id": "mindfulness4", "name": "심상 떠올리기", "isActive": true },
-        { "id": "mindfulness5", "name": "안구운동 활용하기", "isActive": true },
-        { "id": "mindfulness6", "name": "불안 들여다보기", "isActive": true }
-      ],
-      "health": [
-        { "id": "health1", "name": "나폴레옹 이야기", "isActive": true },
-        { "id": "health2", "name": "흰 눈의 유래", "isActive": true },
-        { "id": "health3", "name": "성모 마리아의 꽃", "isActive": true },
-        { "id": "health4", "name": "치매의 정의", "isActive": false },
-        { "id": "health5", "name": "치매에 관한 오해", "isActive": true },
-        { "id": "health6", "name": "노아의 대홍수", "isActive": true }
-      ],
-      "selfTest": [
-        { "id": "selfTest1", "name": "기억 감퇴 증상", "isActive": true },
-        { "id": "selfTest2", "name": "불안 증상 평가 ", "isActive": false },
-        { "id": "selfTest3", "name": "우울 증상 평가", "isActive": true },
-        { "id": "selfTest4", "name": "뇌졸중 위험도 평가", "isActive": false },
-        { "id": "selfTest5", "name": "통증 증상 평가", "isActive": true },
-        { "id": "selfTest6", "name": "체질량 지수 계산 ", "isActive": true }
-      ]
-    }
+    "body": [
+      { "id": "body1", "name": "제자리 걷기", "isActive": false },
+      { "id": "body2", "name": "도리도리", "isActive": true },
+      { "id": "body3", "name": "목돌리기", "isActive": true },
+      { "id": "body4", "name": "갸우뚱하기", "isActive": false },
+      { "id": "body5", "name": "하늘 땅 보기", "isActive": true },
+      { "id": "body6", "name": "기지개 펴기", "isActive": true }
+    ],
+    "mindfulness": [
+      { "id": "mindfulness1", "name": "감각에 집중하기", "isActive": false },
+      { "id": "mindfulness2", "name": "기본 호흡법", "isActive": false },
+      { "id": "mindfulness3", "name": "신체 이완하기", "isActive": true },
+      { "id": "mindfulness4", "name": "심상 떠올리기", "isActive": true },
+      { "id": "mindfulness5", "name": "안구운동 활용하기", "isActive": true },
+      { "id": "mindfulness6", "name": "불안 들여다보기", "isActive": true }
+    ],
+    "health": [
+      { "id": "health1", "name": "나폴레옹 이야기", "isActive": true },
+      { "id": "health2", "name": "흰 눈의 유래", "isActive": true },
+      { "id": "health3", "name": "성모 마리아의 꽃", "isActive": true },
+      { "id": "health4", "name": "치매의 정의", "isActive": false },
+      { "id": "health5", "name": "치매에 관한 오해", "isActive": true },
+      { "id": "health6", "name": "노아의 대홍수", "isActive": true }
+    ],
+    "selfTest": [
+      { "id": "selfTest1", "name": "기억 감퇴 증상", "isActive": true },
+      { "id": "selfTest2", "name": "불안 증상 평가 ", "isActive": false },
+      { "id": "selfTest3", "name": "우울 증상 평가", "isActive": true },
+      { "id": "selfTest4", "name": "뇌졸중 위험도 평가", "isActive": false },
+      { "id": "selfTest5", "name": "통증 증상 평가", "isActive": true },
+      { "id": "selfTest6", "name": "체질량 지수 계산 ", "isActive": true }
+    ]
   }
-  
+}

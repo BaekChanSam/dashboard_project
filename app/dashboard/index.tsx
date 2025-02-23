@@ -1,12 +1,12 @@
-import QuestionList from "@/components/question_list/question_list";
-import TrainingSingleManagement from "@/components/training_management/training_single_management";
-import TrainingManagement from "@/components/training_management/training_single_management";
-import PreferenceCircularChart from "@/components/training_stats/preference_circular_chart";
-import TrainingStats from "@/components/training_stats/preference_circular_chart";
-import PointChart from "@/components/usage_chart/pointChart";
-import UserList from "@/components/user_list/userList";
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import QuestionList from '@/components/question_list/question_list';
+import TrainingSingleManagement from '@/components/training_management/training_single_management';
+import TrainingManagement from '@/components/training_management/training_single_management';
+import PreferenceCircularChart from '@/components/training_stats/preference_circular_chart';
+import TrainingStats from '@/components/training_stats/preference_circular_chart';
+import PointChart from '@/components/usage_chart/pointChart';
+import UserList from '@/components/user_list/userList';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 
 export default function DashboardIndex() {
   return (
@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
   },
   topRow: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
     marginBottom: 16,
   },
   bottomRow: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   leftComponent: {
     flex: 2,

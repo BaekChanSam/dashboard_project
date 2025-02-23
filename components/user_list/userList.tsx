@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import usersData from "../../mock/mock_users.json";
-import { Activity, Airplay } from '@tamagui/lucide-icons'
-import { Button } from "tamagui";
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import usersData from '../../mock/mock_users.json';
+import { Activity, Airplay } from '@tamagui/lucide-icons';
+import { Button } from 'tamagui';
 
 type User = {
   id: string;
@@ -13,7 +13,6 @@ type User = {
 };
 
 export default function UserList() {
-
   // 상태 변수: 사용자 데이터를 관리
   const [users, setUsers] = useState<User[]>([]);
 
@@ -30,8 +29,8 @@ export default function UserList() {
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         // 해당 ID의 상태 변경
-        user.id === id ? { ...user, isActive: !user.isActive } : user
-      )
+        user.id === id ? { ...user, isActive: !user.isActive } : user,
+      ),
     );
   };
 
@@ -62,7 +61,7 @@ export default function UserList() {
       >
         <Text style={styles.buttonText}>
           {/* 상태에 따라 버튼 텍스트 변경 */}
-          {item.isActive ? "Deactivate" : "Activate"}
+          {item.isActive ? 'Deactivate' : 'Activate'}
         </Text>
       </Button>
     </View>
@@ -90,17 +89,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   listContainer: {
     paddingBottom: 20,
   },
   userItem: {
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
     padding: 15,
     borderRadius: 10,
     marginBottom: 10,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
@@ -108,27 +107,27 @@ const styles = StyleSheet.create({
   userInfo: {
     fontSize: 16,
     marginBottom: 5,
-    color: "#333333",
+    color: '#333333',
   },
   label: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   button: {
     marginTop: 10,
     padding: 10,
     borderRadius: 5,
-    alignItems: "center",
+    alignItems: 'center',
   },
   activeButton: {
     // 활성화 상태 버튼 색상
-    backgroundColor: "#ff6666",
+    backgroundColor: '#ff6666',
   },
   inactiveButton: {
     // 비활성화 상태 버튼 색상
-    backgroundColor: "#66cc66",
+    backgroundColor: '#66cc66',
   },
   buttonText: {
-    color: "#ffffff",
-    fontWeight: "bold",
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
 });

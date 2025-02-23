@@ -1,7 +1,7 @@
-import PopularCardList from "@/components/training_stats/popular_card_list";
-import PreferenceCircularChart from "@/components/training_stats/preference_circular_chart";
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import PopularCardList from '@/components/training_stats/popular_card_list';
+import PreferenceCircularChart from '@/components/training_stats/preference_circular_chart';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function TrainingStatsPage() {
   return (
@@ -29,30 +29,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginBottom: 20,
-    color: "#333",
+    color: '#333',
   },
   content: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   left: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginRight: 16,
   },
   right: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

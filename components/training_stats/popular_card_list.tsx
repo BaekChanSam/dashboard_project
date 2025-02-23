@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 type Game = {
   name: string;
@@ -12,7 +12,7 @@ export default function PopularCardList() {
 
   useEffect(() => {
     // JSON 파일을 require로 로드
-    const trainingCount: Game[] = require("../../mock/training_count.json");
+    const trainingCount: Game[] = require('../../mock/training_count.json');
 
     // 데이터를 count 기준으로 정렬 후 상위 4개와 하위 4개로 분리
     const sortedGames = [...trainingCount].sort((a, b) => b.count - a.count);
@@ -61,33 +61,33 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 10,
-    color: "#333",
+    color: '#333',
   },
   grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   card: {
-    width: "48%",
+    width: '48%',
     padding: 10,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     borderRadius: 8,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: '#f9f9f9',
     marginBottom: 10,
-    alignItems: "center",
+    alignItems: 'center',
   },
   cardTitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 5,
-    color: "#555",
+    color: '#555',
   },
   cardText: {
     fontSize: 14,
-    color: "#777",
+    color: '#777',
   },
 });

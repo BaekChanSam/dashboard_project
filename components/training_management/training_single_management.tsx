@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import trainingData from "../../mock/training_data.json"; // JSON 데이터 import
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import trainingData from '../../mock/training_data.json'; // JSON 데이터 import
 
 type Game = {
   id: string;
@@ -22,7 +22,7 @@ export default function TrainingSingleManagement() {
     const { categories, gamesData } = trainingData;
 
     // brain 카테고리 찾기
-    const brain = categories.find((category) => category.key === "brain");
+    const brain = categories.find((category) => category.key === 'brain');
     if (brain) {
       setBrainCategory(brain);
     }
@@ -37,9 +37,7 @@ export default function TrainingSingleManagement() {
   const renderGameItem = (game: Game) => (
     <View key={game.id} style={styles.gameItem}>
       <Text style={styles.gameName}>{game.name}</Text>
-      <Text style={styles.gameStatus}>
-        {game.isActive ? "활성화됨" : "비활성화됨"}
-      </Text>
+      <Text style={styles.gameStatus}>{game.isActive ? '활성화됨' : '비활성화됨'}</Text>
     </View>
   );
 
@@ -64,19 +62,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: '#f8f8f8',
   },
   title: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 16,
   },
   gameItem: {
     marginBottom: 12,
     padding: 10,
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
     borderRadius: 8,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -84,18 +82,18 @@ const styles = StyleSheet.create({
   },
   gameName: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 4,
-    color: "#333",
+    color: '#333',
   },
   gameStatus: {
     fontSize: 14,
-    color: "#666",
+    color: '#666',
   },
   loadingText: {
     fontSize: 16,
-    color: "#999",
-    textAlign: "center",
+    color: '#999',
+    textAlign: 'center',
     marginTop: 20,
   },
 });

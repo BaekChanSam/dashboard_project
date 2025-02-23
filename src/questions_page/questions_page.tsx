@@ -1,7 +1,7 @@
-import QuestionList from "@/components/question_list/question_list";
-import { Toast } from "@/components/toast/toast";
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import QuestionList from '@/components/question_list/question_list';
+import { Toast } from '@/components/toast/toast';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function QuestionsPage() {
   return (
@@ -10,7 +10,7 @@ export default function QuestionsPage() {
       {/* QuestionList 컴포넌트 호출 */}
       <QuestionList />
 
-      <Toast/>
+      <Toast />
     </View>
   );
 }
@@ -18,14 +18,14 @@ export default function QuestionsPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
     padding: 20,
   },
   title: {
     fontSize: 24,
 
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginBottom: 20,
   },
 });

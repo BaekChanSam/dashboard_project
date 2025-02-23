@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import questionsData from "../../mock/questions.json"; // import로 JSON 데이터를 불러오기
-import { ToastViewport, useToastController } from "@tamagui/toast";
-import { Toast } from "../toast/toast";
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import questionsData from '../../mock/questions.json'; // import로 JSON 데이터를 불러오기
+import { ToastViewport, useToastController } from '@tamagui/toast';
+import { Toast } from '../toast/toast';
 
 // Question 타입 정의
 type Question = {
@@ -15,7 +15,7 @@ type Question = {
 export default function QuestionList() {
   const [questions, setQuestions] = useState<Question[]>([]);
 
-  const toast = useToastController()
+  const toast = useToastController();
 
   useEffect(() => {
     // JSON 데이터를 상태로 설정
@@ -25,8 +25,7 @@ export default function QuestionList() {
   const handleDelete = (id: string) => {
     setQuestions((prevQuestions) => prevQuestions.filter((question) => question.id !== id));
 
-    toast.show(`number ${id} delete!`)
-
+    toast.show(`number ${id} delete!`);
   };
 
   const renderQuestionItem = ({ item }: { item: Question }) => (
@@ -43,7 +42,7 @@ export default function QuestionList() {
 
   return (
     <View style={styles.container}>
-      <ToastViewport flexDirection="column" bottom={10} left={0} right={0}/>
+      <ToastViewport flexDirection="column" bottom={10} left={0} right={0} />
 
       {/* 테이블 헤더 */}
       <View style={[styles.row, styles.header]}>
@@ -55,12 +54,7 @@ export default function QuestionList() {
       </View>
 
       {/* 테이블 데이터 */}
-      <FlatList
-        data={questions}
-        keyExtractor={(item) => item.id}
-        renderItem={renderQuestionItem}
-        contentContainerStyle={styles.listContainer}
-      />
+      <FlatList data={questions} keyExtractor={(item) => item.id} renderItem={renderQuestionItem} contentContainerStyle={styles.listContainer} />
     </View>
   );
 }
@@ -68,50 +62,50 @@ export default function QuestionList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
     padding: 20,
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
   listContainer: {
     paddingBottom: 20,
   },
   row: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#ffffff",
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
     paddingVertical: 10,
     paddingHorizontal: 5,
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+    borderBottomColor: '#ddd',
   },
   header: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: '#e0e0e0',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     borderBottomWidth: 2,
-    borderBottomColor: "#bbb",
+    borderBottomColor: '#bbb',
   },
   cell: {
     flex: 1,
     paddingHorizontal: 5,
     fontSize: 14,
-    color: "#333",
+    color: '#333',
   },
   centerText: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   deleteButton: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   deleteText: {
-    color: "red",
-    fontWeight: "bold",
+    color: 'red',
+    fontWeight: 'bold',
     fontSize: 16,
   },
 });

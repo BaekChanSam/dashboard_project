@@ -1,6 +1,6 @@
-import UserList from "@/components/user_list/userList";
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import UserList from '@/components/user_list/userList';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function UserManagementPage() {
   return (
@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: '#f5f5f5',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
     marginBottom: 20,
   },
 });

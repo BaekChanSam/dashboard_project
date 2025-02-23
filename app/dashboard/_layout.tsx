@@ -1,8 +1,8 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Stack } from "expo-router";
-import Header from "@/components/header/header";
-import Sidebar from "@/components/sidebar/sidebar";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Stack } from 'expo-router';
+import Header from '@/components/header/header';
+import Sidebar from '@/components/sidebar/sidebar';
 
 export default function DashboardLayout() {
   return (
@@ -20,8 +20,7 @@ export default function DashboardLayout() {
 
         {/* 페이지 컨텐츠 */}
         <View style={styles.content}>
-        <Stack screenOptions={{ headerShown: false }} />
-        
+          <Stack screenOptions={{ headerShown: false }} />
         </View>
       </View>
     </View>
@@ -31,28 +30,25 @@ export default function DashboardLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
-    justifyContent: "center",
+    borderBottomColor: '#ddd',
+    justifyContent: 'center',
     paddingHorizontal: 16,
   },
   body: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   sidebar: {
     width: 200,
-    backgroundColor: "#333",
+    backgroundColor: '#333',
   },
   content: {
     flex: 1,
     padding: 16,
   },
 });
-
-
-

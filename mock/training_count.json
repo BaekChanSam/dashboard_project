@@ -1,11 +1,10 @@
 [
-    { "name": "부호천사", "count": 95 },
-    { "name": "무지개 멜로디", "count": 90 },
-    { "name": "내 마음의 풍등", "count": 85 },
-    { "name": "행성탈출", "count": 80 },
-    { "name": "스핑크스의 돌", "count": 40 },
-    { "name": "매의 눈", "count": 35 },
-    { "name": "숲속 친구들", "count": 30 },
-    { "name": "신의 탑", "count": 25 }
-  ]
-  
+  { "name": "부호천사", "count": 95 },
+  { "name": "무지개 멜로디", "count": 90 },
+  { "name": "내 마음의 풍등", "count": 85 },
+  { "name": "행성탈출", "count": 80 },
+  { "name": "스핑크스의 돌", "count": 40 },
+  { "name": "매의 눈", "count": 35 },
+  { "name": "숲속 친구들", "count": 30 },
+  { "name": "신의 탑", "count": 25 }
+]

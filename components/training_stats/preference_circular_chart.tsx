@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
-import trainingCount from "../../mock/training_count.json"; // JSON 데이터 import
-import { View, Text } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { PieChart, Pie, Cell, Tooltip } from 'recharts';
+import trainingCount from '../../mock/training_count.json'; // JSON 데이터 import
+import { View, Text } from 'react-native';
 
 // Training 타입 정의
 type Training = {
@@ -14,7 +14,7 @@ type TrainingWithPercentage = Training & {
   percentage: string;
 };
 
-export default function PreferenceCircularChart({enableChartLabel}: { enableChartLabel? : boolean}) {
+export default function PreferenceCircularChart({ enableChartLabel }: { enableChartLabel?: boolean }) {
   const [data, setData] = useState<TrainingWithPercentage[]>([]);
 
   useEffect(() => {
@@ -23,7 +23,6 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
 
     // 데이터 총합 계산
     const totalValue = rawData.reduce((sum, item) => sum + item.count, 0);
-
 
     // 데이터를 count 기준으로 정렬 후 상위 4개와 나머지 합산
     const sortedData = [...rawData].sort((a, b) => b.count - a.count);
@@ -37,7 +36,7 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
         percentage: ((item.count / totalValue) * 100).toFixed(1),
       })),
       {
-        name: "이외",
+        name: '이외',
         count: othersCount,
         percentage: ((othersCount / totalValue) * 100).toFixed(1),
       },
@@ -45,23 +44,27 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
     setData(processedData);
   }, []);
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA336A"];
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AA336A'];
 
   // 라벨 표시 함수
-  const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, index }:  { cx: number , cy: number, midAngle: number, innerRadius:number, outerRadius:number, index:number}) => {
+  const renderLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    index,
+  }: {
+    cx: number;
+    cy: number;
+    midAngle: number;
+    innerRadius: number;
+    outerRadius: number;
+    index: number;
+  }) => {
     const radius = innerRadius + (outerRadius - innerRadius) / 2; // 반지름 계산
     const x = cx + radius * Math.cos(-midAngle * (Math.PI / 180)); // x좌표 계산
     const y = cy + radius * Math.sin(-midAngle * (Math.PI / 180)); // y좌표 계산
-
-    return (
-      <Text style={[{   position: "absolute",
-        color: "white", // 텍스트 색상
-        fontSize: 12,
-        fontWeight: "bold",
-        textAlign: "center",}, { left: x, top: y }]}>
-      {`${data[index].percentage}%`}
-    </Text>
-    )
 
     return (
       <text
@@ -70,7 +73,7 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
         fill="white" // 텍스트 색상
         textAnchor="middle"
         dominantBaseline="central"
-        style={{ fontSize: "12px", fontWeight: "bold" }}
+        style={{ fontSize: '12px', fontWeight: 'bold' }}
       >
         {`${data[index].percentage}%`}
       </text>
@@ -80,17 +83,19 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
   return (
     <View
       style={{
-        display: "flex", // 가로 배치
-        justifyContent: "center", // 전체 가로 중앙 정렬
-        alignItems: "center", // 세로 중앙 정렬
-        width: "100%", // 상단 오른쪽 영역의 너비에 맞추기
-        height: "100%", // 상단 오른쪽 영역의 높이에 맞추기
+        display: 'flex', // 가로 배치
+        justifyContent: 'center', // 전체 가로 중앙 정렬
+        alignItems: 'center', // 세로 중앙 정렬
+        width: '100%', // 상단 오른쪽 영역의 너비에 맞추기
+        height: '100%', // 상단 오른쪽 영역의 높이에 맞추기
         padding: 20,
         // boxSizing: "border-box",
       }}
     >
       {/* 원형 차트 */}
-      <View style={{ marginRight: 20 }}> {/* 차트와 설명 사이 간격 */}
+      <View style={{ marginRight: 20 }}>
+        {' '}
+        {/* 차트와 설명 사이 간격 */}
         <PieChart width={400} height={400}>
           <Pie
             data={data}
@@ -111,32 +116,32 @@ export default function PreferenceCircularChart({enableChartLabel}: { enableChar
       </View>
 
       {/* 색상별 설명 */}
-    {enableChartLabel && ( 
-      <View>
-      {data.map((entry, index) => (
-        <View
-          key={`label-${index}`}
-          style={{
-            flexDirection:"row",
-            alignItems: "center",
-            marginBottom: 8,
-          }}
-        >
-          {/* 색상 사각형 */}
-          <View
-            style={{
-              width: 16,
-              height: 16,
-              backgroundColor: COLORS[index % COLORS.length],
-              marginRight: 8,
-            }}
-          />
-          {/* 텍스트 */}
-          <Text>{`${entry.name}: ${entry.percentage}%`}</Text> {/* 백분율 표시 */}
+      {enableChartLabel && (
+        <View>
+          {data.map((entry, index) => (
+            <View
+              key={`label-${index}`}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: 8,
+              }}
+            >
+              {/* 색상 사각형 */}
+              <View
+                style={{
+                  width: 16,
+                  height: 16,
+                  backgroundColor: COLORS[index % COLORS.length],
+                  marginRight: 8,
+                }}
+              />
+              {/* 텍스트 */}
+              <Text>{`${entry.name}: ${entry.percentage}%`}</Text> {/* 백분율 표시 */}
+            </View>
+          ))}
         </View>
-      ))}
-    </View>
-  )}
+      )}
     </View>
   );
 }
