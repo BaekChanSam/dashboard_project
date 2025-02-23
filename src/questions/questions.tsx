@@ -1,6 +1,5 @@
 import QuestionList from '@/components/question_list/question_list';
-import { Toast } from '@/components/toast/toast';
-import React from 'react';
+import { Toast } from '@tamagui/toast';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function QuestionsPage() {

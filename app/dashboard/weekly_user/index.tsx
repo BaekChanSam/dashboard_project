@@ -1,5 +1,4 @@
-import WeeklyUserPage from '@/src/weekly_user_page/weekly_user_page';
-import React from 'react';
+import WeeklyUserPage from '@/src/weekly_user/weekly_user';
 
 export default function WeeklyUserIndex() {
   return <WeeklyUserPage />;
