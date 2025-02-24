@@ -28,10 +28,7 @@ Recharts를 활용한 데이터 시각화 기능을 포함하고 있으며, **Fi
 git clone https://github.com/BaekChanSam/dashboard_project.git
 
 # 프로젝트 디렉토리로 이동
-cd dashboard_pro  ject
-
-# 패키지 설치
-yarn install
+cd dashboard_project
 
 # Expo 개발 서버 실행
 yarn expo start --web
