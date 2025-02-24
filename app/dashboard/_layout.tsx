@@ -1,7 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import { Stack } from 'expo-router';
-import Header from '@/components/header/header';
+
 import Sidebar from '@/components/sidebar/sidebar';
+import { Header } from '@/components/header';
 
 export default function DashboardLayout() {
   return (
