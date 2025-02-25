@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 type Game = {
@@ -12,7 +12,7 @@ export default function PopularCardList() {
 
   useEffect(() => {
     // JSON 파일을 require로 로드
-    const trainingCount: Game[] = require('../../mock/training_count.json');
+    const trainingCount: Game[] = require('../../../mock/training_count.json');
 
     // 데이터를 count 기준으로 정렬 후 상위 4개와 하위 4개로 분리
     const sortedGames = [...trainingCount].sort((a, b) => b.count - a.count);

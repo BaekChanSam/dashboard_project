@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import trainingData from '../../mock/training_data.json'; // JSON 데이터 import
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import trainingData from '../../../mock/training_data.json';
 import { Button } from 'tamagui';
 
 type Category = {

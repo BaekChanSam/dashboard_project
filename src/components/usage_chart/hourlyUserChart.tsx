@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 type HourlyData = {
@@ -11,7 +11,7 @@ export default function HourlyUserChart() {
 
   useEffect(() => {
     // JSON 데이터를 require로 불러오기
-    const hourlyUsersData: HourlyData[] = require('../../mock/hourly_users.json');
+    const hourlyUsersData: HourlyData[] = require('../../../mock/hourly_users.json');
     setData(hourlyUsersData);
   }, []);
 

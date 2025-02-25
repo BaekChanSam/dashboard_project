@@ -1,4 +1,4 @@
-import TrainingMultiManagement from '@/components/training_management/training_multi_management';
+import TrainingMultiManagement from '@/src/components/training_management/training_multi_management';
 import { View, StyleSheet } from 'react-native';
 
 export default function TrainingManagementPage() {

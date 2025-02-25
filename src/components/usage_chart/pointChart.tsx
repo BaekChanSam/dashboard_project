@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // 타입 정의
@@ -12,7 +12,7 @@ export default function PointChart() {
 
   useEffect(() => {
     // JSON 데이터를 require로 불러오고 타입 단언 적용
-    const weeklyUsersData: UserData[] = require('../../mock/weekly_users.json');
+    const weeklyUsersData: UserData[] = require('../../../mock/weekly_users.json');
     setData(weeklyUsersData);
   }, []);
 

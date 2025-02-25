@@ -1,5 +1,5 @@
-import PopularCardList from '@/components/training_stats/popular_card_list';
-import PreferenceCircularChart from '@/components/training_stats/preference_circular_chart';
+import PopularCardList from '@/src/components/training_stats/popular_card_list';
+import PreferenceCircularChart from '@/src/components/training_stats/preference_circular_chart';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function TrainingStatsPage() {

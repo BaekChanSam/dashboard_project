@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import usersData from '../../mock/mock_users.json';
-import { Activity, Airplay } from '@tamagui/lucide-icons';
+import { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, FlatList} from 'react-native';
+import usersData from '../../../mock/mock_users.json';
 import { Button } from 'tamagui';
 
 type User = {

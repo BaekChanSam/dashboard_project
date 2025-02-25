@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import trainingCount from '../../mock/training_count.json'; // JSON 데이터 import
+import trainingCount from '../../../mock/training_count.json';
 import { View, Text } from 'react-native';
 
 // Training 타입 정의

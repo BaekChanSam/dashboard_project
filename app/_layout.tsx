@@ -1,9 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
 import { Stack } from 'expo-router';
-import { createTamagui, TamaguiProvider, View } from 'tamagui';
-import { DefaultTheme } from '@react-navigation/native';
-import * as SplashScreen from 'expo-splash-screen';
+import { createTamagui, TamaguiProvider} from 'tamagui';
 import { StatusBar } from 'expo-status-bar';
 import { defaultConfig } from '@tamagui/config/v4';
 import { ToastProvider } from '@tamagui/toast';

@@ -1,4 +1,4 @@
-import { Toast as TamaguiToast, useToastController, useToastState } from '@tamagui/toast';
+import { Toast as TamaguiToast, useToastState } from '@tamagui/toast';
 import { YStack } from 'tamagui';
 
 export const Toast = () => {

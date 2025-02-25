@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import { Stack } from 'expo-router';
+import { Header } from '@/src/components/header/header';
+import Sidebar from '@/src/components/sidebar/sidebar';
 
-import Sidebar from '@/components/sidebar/sidebar';
-import { Header } from '@/components/header';
 
 export default function DashboardLayout() {
   return (
@@ -22,6 +22,7 @@ export default function DashboardLayout() {
         <View style={styles.content}>
           <Stack screenOptions={{ headerShown: false }} />
         </View>
+
       </View>
     </View>
   );

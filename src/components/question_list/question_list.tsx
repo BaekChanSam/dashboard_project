@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import questionsData from '../../mock/questions.json'; // import로 JSON 데이터를 불러오기
 import { ToastViewport, useToastController } from '@tamagui/toast';
-import { Toast } from '../toast/toast';
+import questionsData from '../../../mock/questions.json';
 
 // Question 타입 정의
 type Question = {

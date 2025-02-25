@@ -1,4 +1,4 @@
-import UserList from '@/components/user_list/userList';
+import UserList from '@/src/components/user_list/userList';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function UserManagementPage() {

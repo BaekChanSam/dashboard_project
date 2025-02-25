@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import trainingData from '../../mock/training_data.json'; // JSON 데이터 import
+import trainingData from '../../../mock/training_data.json';
 
 type Game = {
   id: string;

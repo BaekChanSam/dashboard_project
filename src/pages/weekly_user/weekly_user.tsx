@@ -1,6 +1,5 @@
-import HourlyUserChart from '@/components/usage_chart/hourlyUserChart';
-import PointChart from '@/components/usage_chart/pointChart';
-import React from 'react';
+import HourlyUserChart from '@/src/components/usage_chart/hourlyUserChart';
+import PointChart from '@/src/components/usage_chart/pointChart';
 import { View, Text, StyleSheet } from 'react-native';
 
 export default function WeeklyUserPage() {

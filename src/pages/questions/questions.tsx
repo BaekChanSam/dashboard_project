@@ -1,4 +1,4 @@
-import QuestionList from '@/components/question_list/question_list';
+import QuestionList from '@/src/components/question_list/question_list';
 import { Toast } from '@tamagui/toast';
 import { View, Text, StyleSheet } from 'react-native';
 

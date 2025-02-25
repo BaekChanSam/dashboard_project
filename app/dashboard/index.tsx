@@ -1,8 +1,8 @@
-import QuestionList from '@/components/question_list/question_list';
-import TrainingSingleManagement from '@/components/training_management/training_single_management';
-import PreferenceCircularChart from '@/components/training_stats/preference_circular_chart';
-import PointChart from '@/components/usage_chart/pointChart';
-import UserList from '@/components/user_list/userList';
+import QuestionList from '@/src/components/question_list/question_list';
+import TrainingSingleManagement from '@/src/components/training_management/training_single_management';
+import PreferenceCircularChart from '@/src/components/training_stats/preference_circular_chart';
+import PointChart from '@/src/components/usage_chart/pointChart';
+import UserList from '@/src/components/user_list/userList';
 import { View, StyleSheet } from 'react-native';
 
 export default function DashboardIndex() {

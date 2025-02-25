@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
@@ -24,7 +23,8 @@ export default function Sidebar() {
   return (
     <View style={styles.container}>
       {menuItems.map((item, index) => (
-        <TouchableOpacity key={index} style={styles.menuItem} onPress={() => router.push(item.route)}>
+        <TouchableOpacity key={index} style={styles.menuItem} 
+        onPress={() => router.push(item.route)}>
           <Text style={styles.menuText}>{item.label}</Text>
         </TouchableOpacity>
       ))}
